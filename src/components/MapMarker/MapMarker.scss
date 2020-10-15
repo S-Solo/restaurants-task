@@ -1,0 +1,15 @@
+.app-map-marker {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #91A4AC;
+    transition: transform 200ms ease-in-out;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.3);
+    }
+    &__title {
+        font-size: 12px;
+    }
+}

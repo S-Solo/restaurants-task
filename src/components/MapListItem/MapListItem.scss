@@ -1,0 +1,39 @@
+@import '~styles/colors';
+
+.map-list-item {
+    width: 100%;
+    box-shadow: 1px 1px 5px solid rgb(143, 142, 142);
+    background-color: white;
+    margin-bottom: 10px;
+    padding: 16px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    &:hover {
+        cursor: pointer;
+        background-color: $primary-color;
+        color: white;
+    }
+    &__row-1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        &__title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        &__rating-container {
+            display: flex;
+            align-items: center;
+            &__icon {
+                width: 16px;
+                height: 16px;
+                color: $star-active-color;
+                margin-right: 8px;
+            }
+        }
+    }
+    &__row-2 {
+
+    }
+}

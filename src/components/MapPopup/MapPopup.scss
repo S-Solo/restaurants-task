@@ -1,0 +1,28 @@
+.app-map-popup {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    &__title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+    &__description {
+        font-size: 12px;
+    }
+    &__rating-container {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+        align-items: center;
+        color: #FFB400;
+        &__icon-container {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+        &__text {
+            font-size: 14px;
+        }
+    }
+}

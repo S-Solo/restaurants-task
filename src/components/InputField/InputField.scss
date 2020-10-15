@@ -1,0 +1,28 @@
+.app-input-container {
+    position: relative;
+    width: 100%;
+    &__input {
+        padding: 12px 16px;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        outline: none;
+        user-select: none;
+        &.padding-right {
+            padding-right: 35px;
+        }
+        &:focus {
+            border-color: #019587;
+        }
+    }
+    &__right-icon-container {
+        position: absolute;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: 10px;
+        top:0;
+    }
+}

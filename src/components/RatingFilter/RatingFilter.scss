@@ -1,0 +1,33 @@
+@import '~styles/colors';
+
+.app-rating-filter {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    background-color: white;
+    width: 100%;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 16px;
+    &__title {
+        margin-bottom: 12px;
+    }
+    &__icons-container {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &__icon {
+            width: 24px;
+            height: 24px;
+            margin: 0 8px;
+            transition: transform 200ms ease-in-out;
+            color: $star-inactive-color;
+            &:hover {
+                transform: scale(1.2);
+            }
+            &--selected {
+                color: $star-active-color;
+            }
+        }
+    }
+}

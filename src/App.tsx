@@ -1,9 +1,11 @@
 import React from 'react';
 
+import MapBox from 'containers/MapBox/MapBox';
+
 const App = () => {
   return (
     <div>
-      React | Typescript | Sass boilerplate
+      <MapBox />
     </div>
   );
 }
