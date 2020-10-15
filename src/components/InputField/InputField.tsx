@@ -17,13 +17,15 @@ const InputField: React.FC<IInputFieldProps> = ({
     RightIcon = null,
     placeholder = '',
 }) => {
+
+
     return (
         <div className="app-input-container">
             <input
                 value={value}
                 onChange={(ev) => onChange(ev.target.value)}
                 className={`app-input-container__input ${className}${RightIcon ? 'padding-right' : ''}`}
-                onClick={(e) => {e.stopPropagation()}}
+                onMouseDown={(e) => {e.stopPropagation()}}
                 placeholder={placeholder}
             />
             {RightIcon && (

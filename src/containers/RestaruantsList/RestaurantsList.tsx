@@ -8,6 +8,7 @@ import { IRestaurant } from 'data-mockup/restaurants.mockup';
 
 import "./RestaurantsList.scss";
 import NoResultsIcon from 'icons/NoResultsIcon';
+import Heading from 'components/Heading/Heading';
 
 interface FilterOptions {
     minRating: number;
@@ -52,6 +53,10 @@ const RestaurantsList: React.FC<IRestaurantsListProps> = ({
         handleFocusToItem(item);
     }
 
+    const handleParentClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
+    }
+
     useEffect(() => {
         return () => {
             if (timeout.current) {
@@ -61,7 +66,8 @@ const RestaurantsList: React.FC<IRestaurantsListProps> = ({
     }, []);
 
     return (
-        <div className="restaurants-list">
+        <div className="restaurants-list" onClick={handleParentClick}>
+            <Heading className="restaurants-list__heading">Restaurants</Heading>
             <InputField
                 value={inputValue}
                 onChange={handleInputChange}

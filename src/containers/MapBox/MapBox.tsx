@@ -7,8 +7,6 @@ import MapPopup from 'components/MapPopup/MapPopup';
 import RestaurantIcon from 'icons/RestaurantIcon';
 import RestaurantsList from 'containers/RestaruantsList/RestaurantsList';
 
-import "./MapBox.scss";
-
 const MapBox: React.FC = () => {
     const [viewport, setViewport] = useState({
         width: '100vw',
@@ -34,7 +32,9 @@ const MapBox: React.FC = () => {
     }
 
     const setFilterParams = ({ minRating, query }: { minRating: number, query: string }) => {
-        setSelectedRestaurant(null);
+        if (selectedRestaurant) {
+            setSelectedRestaurant(null);
+        }
         setFilteredRestaurants(restaurantsData.filter((el: IRestaurant) => {
             if (!query) {
                 return el.rating >= minRating;
@@ -50,6 +50,7 @@ const MapBox: React.FC = () => {
                 mapStyle="mapbox://styles/sokrat-poghosyan/ckg9r53qf0x8w19s47bot59ue"
                 {...viewport}
                 onViewportChange={handleViewPortChange}
+                doubleClickZoom={false}
             >
                 <RestaurantsList
                     filteredRestaurants={filteredRestaurants}
