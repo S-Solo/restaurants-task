@@ -3,12 +3,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import InputField from 'components/InputField/InputField';
 import RatingFilter from 'components/RatingFilter/RatingFilter';
 import MapListItem from 'components/MapListItem/MapListItem';
+import Heading from 'components/Heading/Heading';
+import NoResults from 'components/NoResults/NoResults';
 import SearchIcon from 'icons/SearchIcon';
 import { IRestaurant } from 'data-mockup/restaurants.mockup';
 
 import "./RestaurantsList.scss";
-import NoResultsIcon from 'icons/NoResultsIcon';
-import Heading from 'components/Heading/Heading';
 
 interface FilterOptions {
     minRating: number;
@@ -53,10 +53,6 @@ const RestaurantsList: React.FC<IRestaurantsListProps> = ({
         handleFocusToItem(item);
     }
 
-    const handleParentClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        e.stopPropagation();
-    }
-
     useEffect(() => {
         return () => {
             if (timeout.current) {
@@ -66,7 +62,7 @@ const RestaurantsList: React.FC<IRestaurantsListProps> = ({
     }, []);
 
     return (
-        <div className="restaurants-list" onClick={handleParentClick}>
+        <div className="restaurants-list">
             <Heading className="restaurants-list__heading">Restaurants</Heading>
             <InputField
                 value={inputValue}
@@ -88,10 +84,7 @@ const RestaurantsList: React.FC<IRestaurantsListProps> = ({
                         onClick={() => { itemClickedHandler(item); }}
                     />
                 )) : (
-                    <div className="restaurants-list__no-results">
-                        <span><NoResultsIcon /></span>
-                        <span className="restaurants-list__no-results__text">No Results...</span>
-                    </div>
+                    <NoResults />
                 )}
         </div>
     );

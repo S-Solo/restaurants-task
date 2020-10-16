@@ -1,7 +1,11 @@
 {
   "name": "restaurant-task",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "private": true,
+  "author": {
+    "name": "Sokrat Poghosyan",
+    "email": "sokrat.poghosyan@gmail.com"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
 import ReactGlMap from 'react-map-gl';
 
-import { restaurantsData, IRestaurant } from 'data-mockup/restaurants.mockup';
+import RestaurantsList from 'containers/RestaruantsList/RestaurantsList';
 import MapMarker from 'components/MapMarker/MapMarker';
 import MapPopup from 'components/MapPopup/MapPopup';
 import RestaurantIcon from 'icons/RestaurantIcon';
-import RestaurantsList from 'containers/RestaruantsList/RestaurantsList';
+import { restaurantsData, IRestaurant } from 'data-mockup/restaurants.mockup';
+
+import './MapBox.scss';
+
+const initialViewPort = {
+    width: '100%',
+    height: '100%',
+    latitude: 40.1818613,
+    longitude: 44.5147676,
+    zoom: 13
+}
 
 const MapBox: React.FC = () => {
-    const [viewport, setViewport] = useState({
-        width: '100vw',
-        height: '100vh',
-        latitude: 40.1852511,
-        longitude: 44.5155512,
-        zoom: 17
-    });
+    const [viewport, setViewport] = useState(initialViewPort);
     const [filteredRestaurants, setFilteredRestaurants] = useState(restaurantsData);
     const [selectedRestaurant, setSelectedRestaurant] = useState<IRestaurant | null>(null);
 
@@ -27,7 +31,7 @@ const MapBox: React.FC = () => {
     }
 
     const handleFocusToItem = (item: IRestaurant) => {
-        setViewport({ ...viewport, latitude: item.coordinates[0], longitude: item.coordinates[1] });
+        setViewport({ ...viewport, latitude: item.coordinates[0], longitude: item.coordinates[1], zoom: 17 });
         setSelectedRestaurant(item);
     }
 
@@ -45,18 +49,18 @@ const MapBox: React.FC = () => {
 
     return (
         <div className="app-map">
+            <RestaurantsList
+                filteredRestaurants={filteredRestaurants}
+                handleFocusToItem={handleFocusToItem}
+                setFilterParams={setFilterParams}
+            />
             <ReactGlMap
+                {...viewport}
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
                 mapStyle="mapbox://styles/sokrat-poghosyan/ckg9r53qf0x8w19s47bot59ue"
-                {...viewport}
                 onViewportChange={handleViewPortChange}
                 doubleClickZoom={false}
             >
-                <RestaurantsList
-                    filteredRestaurants={filteredRestaurants}
-                    handleFocusToItem={handleFocusToItem}
-                    setFilterParams={setFilterParams}
-                />
                 {filteredRestaurants.map(item => {
                     return (
                         <MapMarker

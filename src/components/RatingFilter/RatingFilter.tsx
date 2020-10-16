@@ -6,7 +6,7 @@ import "./RatingFilter.scss";
 
 interface IRatingFilterProps {
     currentMinimumRating?: number;
-    onChange: (r: number) => void;
+    onChange: (minRating: number) => void;
 };
 
 const RatingFilter: React.FC<IRatingFilterProps> = ({
@@ -25,8 +25,7 @@ const RatingFilter: React.FC<IRatingFilterProps> = ({
                     >
                         <RatingIcon />
                     </div>
-                )
-                )}
+                ))}
             </div>
         </div>
     );
